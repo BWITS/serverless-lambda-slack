@@ -1,7 +1,6 @@
 'use strict';
 
 module.exports.hello = (event, context, callback) => {
-  console.log('Hello World');
   const response = {
     statusCode: 200,
     body: JSON.stringify({

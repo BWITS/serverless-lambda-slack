@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: buildkite
+service: my-service
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -19,11 +19,9 @@ service: buildkite
 
 provider:
   name: aws
-  runtime: nodejs4.3
-
-# you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
+  runtime: nodejs6.10
+  stage: dev
+  region: ap-southeast-2
 
 # you can add statements to the Lambda function's IAM Role here
 #  iamRoleStatements:
@@ -39,6 +37,7 @@ provider:
 #          - ""
 #          - - "arn:aws:s3:::"
 #            - "Ref" : "ServerlessDeploymentBucket"
+#            - "/*"
 
 # you can define service wide environment variables here
 #  environment:
@@ -71,6 +70,16 @@ functions:
 #      - alexaSkill
 #      - iot:
 #          sql: "SELECT * FROM 'some_topic'"
+#      - cloudwatchEvent:
+#          event:
+#            source:
+#              - "aws.ec2"
+#            detail-type:
+#              - "EC2 Instance State-change Notification"
+#            detail:
+#              state:
+#                - pending
+#      - cloudwatchLog: '/aws/lambda/hello'
 
 #    Define function environment variables here
 #    environment:
